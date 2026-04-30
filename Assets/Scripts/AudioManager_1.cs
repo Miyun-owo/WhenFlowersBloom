@@ -30,6 +30,32 @@ public class AudioManager_1 : MonoBehaviour
         isPlaying = true;
     }
 
+    public void PauseAudio()
+    {
+        frontSource.Pause();
+        rightSource.Pause();
+        backSource.Pause();
+        leftSource.Pause();
+    }
+
+    public void ResumeAudio()
+    {
+        frontSource.UnPause();
+        rightSource.UnPause();
+        backSource.UnPause();
+        leftSource.UnPause();
+    }
+
+    public void StopAudio()
+    {
+        frontSource.Stop();
+        rightSource.Stop();
+        backSource.Stop();
+        leftSource.Stop();
+
+        isPlaying = false;
+    }
+
     void UpdateVolumes()
     {
         float angleDiff = spaceManager.CurrentAngleDifference;
@@ -42,4 +68,5 @@ public class AudioManager_1 : MonoBehaviour
         backSource.volume = sideVolume;
         leftSource.volume = sideVolume * 0.5f;
     }
+
 }

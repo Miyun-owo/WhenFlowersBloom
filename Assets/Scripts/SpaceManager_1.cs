@@ -7,24 +7,30 @@ public class SpaceManager_1 : MonoBehaviour
 
     [Header("Tracking Status")]
     public bool isTracking = false;
-
     public float CurrentAngleDifference { get; private set; }
+
+    private float initialOffset;
 
     void Start()
     {
-        Input.compass.enabled = true;
+        Input.gyro.enabled = true;
     }
 
     void Update()
     {
         if (!isTracking) return;
 
-        float currentHeading = Input.compass.trueHeading;
-        CurrentAngleDifference = Mathf.Abs(Mathf.DeltaAngle(currentHeading, targetAngle));
+        Quaternion deviceRotation = Input.gyro.attitude;
+        float yAngle = deviceRotation.eulerAngles.y;
+
+        float adjustedAngle = Mathf.DeltaAngle(yAngle - initialOffset, targetAngle);
+
+        CurrentAngleDifference = Mathf.Lerp(CurrentAngleDifference,Mathf.Abs(adjustedAngle),0.2f);
     }
 
     public void StartTracking()
     {
+        initialOffset = Input.gyro.attitude.eulerAngles.y;
         isTracking = true;
     }
 
