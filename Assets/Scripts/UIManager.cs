@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject[] MenuList;
@@ -63,5 +63,18 @@ public class UIManager : MonoBehaviour
         SetObjectsActive(Section1_Ans, false);
         SetObjectsActive(Section2, false);
         SetObjectsActive(Section3, true);
+    }
+
+    [Header("UI")]
+    public Image targetIcon;
+    public Sprite state1Sprite;
+    public Sprite state2Sprite;
+    public void ShowFail()
+    {
+        targetIcon.sprite = state2Sprite;
+    }
+    public void ResetUI()
+    {
+        targetIcon.sprite = state1Sprite;
     }
 }

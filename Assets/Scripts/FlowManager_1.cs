@@ -39,7 +39,9 @@ public class FlowManager_1 : MonoBehaviour
         if (!hasSetPosition) return;
         if (isChecking) return;
 
-        bool isCorrect = gameResult.CheckResult();
+        float dot = spaceManager.CurrentDot;
+        bool isCorrect = gameResult.CheckResult(dot);
+        spaceManager.Confirm(isCorrect);
 
         if (isCorrect)
         {
@@ -57,7 +59,7 @@ public class FlowManager_1 : MonoBehaviour
         isChecking = false;
 
         audioManager.StopAudio();
-        gameResult.ResetResultUI();
+        spaceManager.ResetState();
     }
 
 }

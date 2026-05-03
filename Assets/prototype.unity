@@ -168,6 +168,9 @@ MonoBehaviour:
   - {fileID: 540001555}
   Section2: []
   Section3: []
+  targetIcon: {fileID: 0}
+  state1Sprite: {fileID: 0}
+  state2Sprite: {fileID: 0}
 --- !u!4 &182679051
 Transform:
   m_ObjectHideFlags: 0
@@ -890,7 +893,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de0bc91ae574d847b444a9350768387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceManager: {fileID: 863688917}
   frontSource: {fileID: 560361932}
   rightSource: {fileID: 1566090586}
   backSource: {fileID: 2135077737}
@@ -1379,8 +1381,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3486c6a6be57ee6459c38b30335cfba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetAngle: 90
-  isTracking: 1
+  playerCamera: {fileID: 537738062}
+  targetSource: {fileID: 1566090586}
+  otherSources: []
+  flowManager: {fileID: 1081361921}
+  focusPower: 2
+  targetMinVolume: 0.3
+  targetMaxVolume: 0.6
+  otherMinVolume: 0.2
+  otherMaxVolume: 0.4
+  confirmBoost: 1.5
 --- !u!1 &897164449
 GameObject:
   m_ObjectHideFlags: 0
@@ -2591,10 +2601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceManager: {fileID: 863688917}
   audioManager: {fileID: 0}
-  successAngleRange: 30
-  targetIcon: {fileID: 201570435}
-  state1Sprite: {fileID: 21300000, guid: 3434568f550d2e8439019c039c1dadd4, type: 3}
-  state2Sprite: {fileID: 21300000, guid: a91e5330218529644a83d9297c4f6bf2, type: 3}
+  successThreshold: 0.85
 --- !u!1 &1566090584
 GameObject:
   m_ObjectHideFlags: 0
